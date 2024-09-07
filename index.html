@@ -57,7 +57,7 @@
 
         @media (max-width: 768px) {
             nav ul {
-                display: none;
+                display: flex;
                 flex-direction: column;
                 position: fixed;
                 top: 0;
@@ -67,10 +67,10 @@
                 background-color: #003366;
                 transform: translateX(-100%);
                 transition: transform 0.3s ease;
+                z-index: 1000; /* Garantir que o menu está acima de outros conteúdos */
             }
 
             nav ul.open {
-                display: flex;
                 transform: translateX(0);
             }
 
@@ -79,6 +79,10 @@
                 flex-direction: column;
                 cursor: pointer;
                 margin: 10px;
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                z-index: 1001; /* Garantir que o botão está acima do menu */
             }
 
             .menu-toggle span {
@@ -265,7 +269,7 @@
             <ul class="nav-list">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#informacoes">Informações</a></li>
-                <li><a href="/VÍDEO.html#videos">como funciona</a></li>
+                <li><a href="/VÍDEO.html#videos">Como Funciona</a></li>
                 <li><a href="#fotos">Fotos</a></li>
                 <li><a href="/documento.html">Documentos</a></li>
                 <li><a href="#contato">Contato</a></li>
@@ -317,7 +321,7 @@
 
     <script>
         const menuToggle = document.querySelector('.menu-toggle');
-        const navList = document.querySelector('.nav-list');
+        const navList = document.querySelector('nav ul');
 
         menuToggle.addEventListener('click', () => {
             navList.classList.toggle('open');
@@ -328,10 +332,6 @@
                 navList.classList.remove('open');
             }
         });
-
-        setTimeout(() => {
-            navList.classList.remove('open');
-        }, 1000000); // 1000 segundos para fechar o menu automaticamente
     </script>
 </body>
 </html>
